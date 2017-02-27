@@ -14,46 +14,46 @@ sub vcl_init {
 
 sub vcl_recv {
     if (req.url ~ "^\/content\/notifications\/.*$") {
-        set req.backend_hint = dynBackend.backend("notifications_rw");
+        set req.backend_hint = dynBackend.backend("notifications-rw");
     }
     elif (req.url ~ "^\/content\/.*$") {
-        set req.backend_hint = dynBackend.backend("content_public_read");
+        set req.backend_hint = dynBackend.backend("content-public-read");
     }
     elif (req.url ~ "^\/enrichedcontent\/.*$") {
-        set req.backend_hint = dynBackend.backend("enriched_content_read_api");
+        set req.backend_hint = dynBackend.backend("enriched-content-read-api");
     }
     elif (req.url ~ "^\/things\/.*$") {
-        set req.backend_hint = dynBackend.backend("public_things_api");
+        set req.backend_hint = dynBackend.backend("public-things-api");
     }
     elif (req.url ~ "^\/content-preview\/.*$") {
-        set req.backend_hint = dynBackend.backend("content_preview");
+        set req.backend_hint = dynBackend.backend("content-preview");
     }
     elif (req.url ~ "^\/lists\/notifications.*$") {
-        set req.backend_hint = dynBackend.backend("list_notifications_rw");
+        set req.backend_hint = dynBackend.backend("list-notifications-rw");
     }
     elif (req.url ~ "^\/lists.*$") {
-        set req.backend_hint = dynBackend.backend("document_store_api");
+        set req.backend_hint = dynBackend.backend("document-store-api");
     }
     elif (req.url ~ "^\/concordances.*$") {
-        set req.backend_hint = dynBackend.backend("public_concordances_api");
+        set req.backend_hint = dynBackend.backend("public-concordances-api");
     }
     elif (req.url ~ "^\/suggest.*$") {
-        set req.backend_hint = dynBackend.backend("concept_suggestion_api");
+        set req.backend_hint = dynBackend.backend("concept-suggestion-api");
     }
     elif (req.url ~ "^\/people\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
-        set req.backend_hint = dynBackend.backend("public_people_api");
+        set req.backend_hint = dynBackend.backend("public-people-api");
     }
     elif (req.url ~ "^\/sixdegrees\/.*$") {
-        set req.backend_hint = dynBackend.backend("public_six_degrees_api");
+        set req.backend_hint = dynBackend.backend("public-six-degrees-api");
     }
     elif (req.url ~ "^\/brands\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
-        set req.backend_hint = dynBackend.backend("public_brands_api");
+        set req.backend_hint = dynBackend.backend("public-brands-api");
     }
     elif (req.url ~ "^\/organisations\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
         set req.backend_hint = dynBackend.backend("public_organisations_api");
     }
     elif (req.url ~ "^\/internalcontent\/.*$") {
-        set req.backend_hint = dynBackend.backend("internal_content_api");
+        set req.backend_hint = dynBackend.backend("internal-content-api");
     }
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
         # create a new backend dynamically to match the requested URL that will be looked up in the Kubernetes DNS.
