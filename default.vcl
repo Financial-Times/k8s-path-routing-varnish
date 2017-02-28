@@ -13,6 +13,10 @@ sub vcl_init {
 }
 
 sub vcl_recv {
+    if (req.method == "GET" && req.url == "/status") {
+           return(synth(200, "OK"));
+    }
+
     if (req.url ~ "^\/content\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("notifications-rw");
     }
