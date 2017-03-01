@@ -38,10 +38,10 @@ sub vcl_recv {
     elif (req.url ~ "^\/lists.*$") {
         set req.backend_hint = dynBackend.backend("document-store-api");
     }
-    elif (req.url ~ "^\/concordances$") {
+    elif (req.url ~ "^\/concordances.*$") {
         set req.backend_hint = dynBackend.backend("public-concordances-api");
     }
-    elif (req.url ~ "^\/suggest$") {
+    elif (req.url ~ "^\/suggest.*$") {
         set req.backend_hint = dynBackend.backend("concept-suggestion-api");
     }
     elif (req.url ~ "^\/people\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
