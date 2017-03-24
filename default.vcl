@@ -30,7 +30,7 @@ sub vcl_recv {
         set req.backend_hint = dynBackend.backend("public-things-api");
     }
     elif (req.url ~ "^\/content-preview\/.*$") {
-        set req.backend_hint = dynBackend.backend("content-preview");
+        set req.backend_hint = dynBackend.backend("content-public-read-preview");
     }
     elif (req.url ~ "^\/lists\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("list-notifications-rw");
