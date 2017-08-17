@@ -54,7 +54,7 @@ sub vcl_recv {
         set req.backend_hint = dynBackend.backend("public-brands-api");
     }
     elif (req.url ~ "^\/organisations\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
-        set req.backend_hint = dynBackend.backend("public_organisations_api");
+        set req.backend_hint = dynBackend.backend("public-organisations-api");
     }
     elif (req.url ~ "^\/internalcontent\/.*$") {
         set req.backend_hint = dynBackend.backend("internal-content-api");
