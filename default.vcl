@@ -20,16 +20,16 @@ sub vcl_recv {
     if (req.url ~ "^\/content\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("notifications-rw");
     }
-    elif (req.url ~ "^\/content\/.*$") {
-        set req.backend_hint = dynBackend.backend("content-public-read");
-    }
     elif (req.url ~ "^\/content\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/annotations.*$") {
         set req.backend_hint = dynBackend.backend("public-annotations-api");
     }
-    elif (req.url ~ "^\/enrichedcontent\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
+    elif (req.url ~ "^\/content\/.*$") {
+        set req.backend_hint = dynBackend.backend("content-public-read");
+    }
+    elif (req.url ~ "^\/enrichedcontent\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("enriched-content-read-api");
     }
-    elif (req.url ~ "^\/things\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
+    elif (req.url ~ "^\/things\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-things-api");
     }
     elif (req.url ~ "^\/content-preview\/.*$") {
@@ -50,16 +50,16 @@ sub vcl_recv {
     elif (req.url ~ "^\/suggest.*$") {
         set req.backend_hint = dynBackend.backend("concept-suggestion-api");
     }
-    elif (req.url ~ "^\/people\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
+    elif (req.url ~ "^\/people\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-people-api");
     }
     elif (req.url ~ "^\/sixdegrees\/.*$") {
         set req.backend_hint = dynBackend.backend("public-six-degrees-api");
     }
-    elif (req.url ~ "^\/brands\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
+    elif (req.url ~ "^\/brands\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-brands-api");
     }
-    elif (req.url ~ "^\/organisations\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$") {
+    elif (req.url ~ "^\/organisations\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-organisations-api");
     }
     elif (req.url ~ "^\/internalcontent\/.*$") {
