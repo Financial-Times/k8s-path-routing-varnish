@@ -20,6 +20,9 @@ sub vcl_recv {
     if (req.url ~ "^\/content\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("notifications-rw");
     }
+    elif (req.url ~ "^\/content\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/annotations.*$") {
+        set req.backend_hint = dynBackend.backend("public-annotations-api");
+    }
     elif (req.url ~ "^\/content\/.*$") {
         set req.backend_hint = dynBackend.backend("content-public-read");
     }
@@ -37,6 +40,9 @@ sub vcl_recv {
     }
     elif (req.url ~ "^\/lists.*$") {
         set req.backend_hint = dynBackend.backend("document-store-api");
+    }
+    elif (req.url ~ "^\/concepts.*$") {
+        set req.backend_hint = dynBackend.backend("concept-search-api");
     }
     elif (req.url ~ "^\/concordances.*$") {
         set req.backend_hint = dynBackend.backend("public-concordances-api");
