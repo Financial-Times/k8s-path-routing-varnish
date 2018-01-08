@@ -47,6 +47,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/concordances.*$") {
         set req.backend_hint = dynBackend.backend("public-concordances-api");
     }
+    elif (req.url ~ "^\/internalconcordances.*$") {
+        set req.backend_hint = dynBackend.backend("internal-concordances");
+    }
     elif (req.url ~ "^\/suggest.*$") {
         set req.backend_hint = dynBackend.backend("concept-suggestion-api");
     }
