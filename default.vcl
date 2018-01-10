@@ -79,6 +79,9 @@ sub vcl_recv {
         set req.url = regsub(req.url, "^\/__[\w-]*\/(.*)$", "/\1");
         set req.http.X-VarnishPassThrough = "true";
     }
+    else {
+         return(synth(404, "Path not found"));
+    }
 
     return (pipe);
 }
