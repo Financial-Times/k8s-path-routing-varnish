@@ -32,6 +32,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/things\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-things-api");
     }
+    elif (req.url ~ "^\/things\?.*$") {
+        set req.backend_hint = dynBackend.backend("public-things-api");
+    }
     elif (req.url ~ "^\/content-preview\/.*$") {
         set req.backend_hint = dynBackend.backend("content-public-read-preview");
     }
