@@ -44,6 +44,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/lists.*$") {
         set req.backend_hint = dynBackend.backend("document-store-api");
     }
+    elif (req.url ~ "^\/concepts\/notifications\/.*$") {
+        set req.backend_hint = dynBackend.backend("concept-events-notifications-reader");
+    }
     elif (req.url ~ "^\/concepts\?.*$") {
         set req.backend_hint = dynBackend.backend("concept-search-api");
     }
