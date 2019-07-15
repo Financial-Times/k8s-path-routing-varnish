@@ -42,7 +42,7 @@ sub vcl_recv {
         set req.backend_hint = dynBackend.backend("list-notifications-rw");
     }
     elif (req.url ~ "^\/lists.*$") {
-        set req.backend_hint = dynBackend.backend("document-store-api");
+        set req.backend_hint = dynBackend.backend("public-lists-api");
     }
     elif (req.url ~ "^\/concepts\/notifications\/.*$") {
         set req.backend_hint = dynBackend.backend("concept-events-notifications-reader");
