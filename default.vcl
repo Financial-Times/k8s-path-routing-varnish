@@ -44,6 +44,14 @@ sub vcl_recv {
     elif (req.url ~ "^\/lists.*$") {
         set req.backend_hint = dynBackend.backend("public-lists-api");
     }
+    elif (req.url ~ "^\/content-placeholders\?.*$") {
+        set req.backend_hint = dynBackend.backend("document-store-api");
+        set req.url = regsub(req.url, "^\/content-placeholders\?(.*)$", "\/search\/complementarycontent\1");
+    }
+    elif (req.url ~ "^\/content-placeholders\/(.*)$") {
+        set req.backend_hint = dynBackend.backend("document-store-api");
+        set req.url = regsub(req.url, "^\/content-placeholders\/(.*)$", "\/complementarycontent\/\1");
+    }
     elif (req.url ~ "^\/concepts\/notifications\/.*$") {
         set req.backend_hint = dynBackend.backend("concept-events-notifications-reader");
     }
