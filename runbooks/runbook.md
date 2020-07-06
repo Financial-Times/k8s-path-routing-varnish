@@ -1,15 +1,14 @@
-<!--
-    Written in the format prescribed by https://github.com/Financial-Times/runbook.md.
-    Any future edits should abide by this format.
--->
-
 # UPP Path routing Varnish
 
-The of the service is to route traffic based on the context path in the URL to appropriate services.
+The Delivery Varnish routing proxy placed after the publishing auth varnish. Its role is to route traffic based on the context path in the URL to appropriate services.
 
 ## Code
 
 k8s-path-routing-varnish
+
+## Primary URL
+
+<https://upp-prod-delivery-glb.upp.ft.com/>
 
 ## Service Tier
 
@@ -42,7 +41,7 @@ AWS
 
 ## Architecture
 
-The service lives in Delivery cluster and gets requests from delivery-varnish and it's role is to route these requests to the appropriate services based on rules set in file named [default.vcl](https://github.com/Financial-Times/k8s-path-routing-varnish/blob/master/default.vcl).
+This Varnish instance is responsible for dinamically forwarding requests to services and cache management based on the context path in the URL. Dynamic routing means that Varnish will send requests to Kubernetes services with more that one pod. This will ensure that traffic will be distributed to all pods of particular microservice. Initial authentification is already performed in service "UPP - Delivery Varnish".
 
 ## Contains Personal Data
 
@@ -52,33 +51,33 @@ No
 
 No
 
-## Dependencies
-
-delivery-varnish
-
 ## Failover Architecture Type
 
-NotApplicable
+ActiveActive
 
 ## Failover Process Type
 
-NotApplicable
+FullyAutomated
 
 ## Failback Process Type
 
-NotApplicable
+FullyAutomated
 
 ## Failover Details
 
-The purpose of the service is to route traffic to the appropriate services so failover to another cluster is not applicable.
+The service is deployed in all clusters. The failover guide for the clusters is located here: <https://github.com/Financial-Times/upp-docs/tree/master/failover-guides/delivery-cluster>
 
 ## Data Recovery Process Type
 
-NotApplicable
+FullyAutomated
+
+## Data Recovery Details
+
+Data for requests is stored in Splunk. Authentification secrets are encrypted and stored in Delivery clusters and in emergency LastPass note "UPP - k8s Basic Auth".
 
 ## Release Process Type
 
-PartiallyAutomated
+FullyAutomated
 
 ## Rollback Process Type
 
@@ -86,23 +85,24 @@ Manual
 
 ## Release Details
 
-Failover is needed when deploying a new version as this will disconnect the services routed through path-routing-varnish
+The deployment is automated.
 
 ## Key Management Process Type
 
-NotApplicable
+None
 
 ## Key Management Details
 
-No keys are used
+There are no keys for rotation.
 
 ## Monitoring
 
-None
+- https://upp-prod-delivery-us.upp.ft.com/__health
+- https://upp-prod-delivery-eu.upp.ft.com/__health
 
 ## First Line Troubleshooting
 
-<https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting>
+https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting
 
 ## Second Line Troubleshooting
 
