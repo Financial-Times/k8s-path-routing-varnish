@@ -1,6 +1,6 @@
 # UPP Path routing Varnish
 
-The Delivery Varnish routing proxy placed after the publishing auth varnish. Its role is to route traffic based on the context path in the URL to appropriate services.
+The Delivery Varnish routing proxy placed after the delivery varnish. Its role is to route traffic based on the context path in the URL to appropriate services.
 
 ## Code
 
