@@ -80,6 +80,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/internalcontent-preview\/.*$") {
         set req.backend_hint = dynBackend.backend("internal-content-preview-api");
     }
+    elif (req.url ~ "^\/ccf-ui\/.*$") {
+        set req.backend_hint = dynBackend.backend("ccf-gateway");
+    }
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
         # create a new backend dynamically to match the requested URL that will be looked up in the Kubernetes DNS.
         # For example calling the URL /__content-ingester/xyz will forward the request to the service content-ingester with the url /xyz
