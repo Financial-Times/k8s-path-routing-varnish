@@ -80,7 +80,7 @@ sub vcl_recv {
     elif (req.url ~ "^\/internalcontent-preview\/.*$") {
         set req.backend_hint = dynBackend.backend("internal-content-preview-api");
     }
-    elif (req.url ~ "^\/ccf-ui\/.*$") {
+    elif (req.url ~ "^\/ccf\/.*$") {
         set req.backend_hint = dynBackend.backend("ccf-gateway");
     }
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
