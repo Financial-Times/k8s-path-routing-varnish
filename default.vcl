@@ -23,6 +23,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/content\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/annotations.*$") {
         set req.backend_hint = dynBackend.backend("public-annotations-api");
     }
+    elif (req.url ~ "^\/content\/feed\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
+        set req.backend_hint = dynBackend.backend("ccf-content-rss");
+    }
     elif (req.url ~ "^\/content\/.*$") {
         set req.backend_hint = dynBackend.backend("content-public-read");
     }
