@@ -38,9 +38,6 @@ sub vcl_recv {
     elif (req.url ~ "^\/things\?.*$") {
         set req.backend_hint = dynBackend.backend("public-things-api");
     }
-    elif (req.url ~ "^\/content-preview\/.*$") {
-        set req.backend_hint = dynBackend.backend("unrolled-content-public-read-preview");
-    }
     elif (req.url ~ "^\/lists\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("list-notifications-rw");
     }
@@ -79,9 +76,6 @@ sub vcl_recv {
     }
     elif (req.url ~ "^\/internalcontent\/.*$") {
         set req.backend_hint = dynBackend.backend("internal-content-api");
-    }
-    elif (req.url ~ "^\/internalcontent-preview\/.*$") {
-        set req.backend_hint = dynBackend.backend("internal-content-preview-api");
     }
     elif (req.url ~ "^\/ccf\/.*$") {
         set req.backend_hint = dynBackend.backend("ccf-gateway");
