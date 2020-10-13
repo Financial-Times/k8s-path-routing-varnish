@@ -65,9 +65,6 @@ sub vcl_recv {
     elif (req.url ~ "^\/people\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-people-api");
     }
-    elif (req.url ~ "^\/sixdegrees\/.*$") {
-        set req.backend_hint = dynBackend.backend("public-six-degrees-api");
-    }
     elif (req.url ~ "^\/brands\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-brands-api");
     }
