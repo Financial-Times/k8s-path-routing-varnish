@@ -20,6 +20,10 @@ sub vcl_recv {
     if (req.url ~ "^\/content\/notifications.*$") {
         set req.backend_hint = dynBackend.backend("notifications-rw");
     }
+    elif (req.url ~ "^\/content\/notifications/__gtg$") {
+        set req.url = "/__gtg"
+        set req.backend_hint = dynBackend.backend("notifications-rw");
+    }
     elif (req.url ~ "^\/content\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/annotations.*$") {
         set req.backend_hint = dynBackend.backend("public-annotations-api");
     }
