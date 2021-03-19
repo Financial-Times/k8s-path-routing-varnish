@@ -1,3 +1,7 @@
+<!--
+    Written in the format prescribed by https://github.com/Financial-Times/runbook.md.
+    Any future edits should abide by this format.
+-->
 # UPP Path routing Varnish
 
 The Delivery Varnish routing proxy placed after the delivery varnish. Its role is to route traffic based on the context path in the URL to appropriate services.
@@ -8,7 +12,7 @@ k8s-path-routing-varnish
 
 ## Primary URL
 
-<https://upp-prod-delivery-glb.upp.ft.com/>
+https://upp-prod-delivery-glb.upp.ft.com/
 
 ## Service Tier
 
@@ -17,23 +21,6 @@ Platinum
 ## Lifecycle Stage
 
 Production
-
-## Delivered By
-
-content
-
-## Supported By
-
-content
-
-## Known About By
-
-- hristo.georgiev
-- mihail.mihaylov
-- kalin.arsov
-- boyko.boykov
-- donislav.belev
-- dimitar.terziev
 
 ## Host Platform
 
@@ -50,6 +37,20 @@ No
 ## Contains Sensitive Data
 
 No
+
+<!-- Placeholder - remove HTML comment markers to activate
+## Can Download Personal Data
+Choose Yes or No
+
+...or delete this placeholder if not applicable to this system
+-->
+
+<!-- Placeholder - remove HTML comment markers to activate
+## Can Contact Individuals
+Choose Yes or No
+
+...or delete this placeholder if not applicable to this system
+-->
 
 ## Failover Architecture Type
 
@@ -87,6 +88,14 @@ Manual
 
 The deployment is automated.
 
+<!-- Placeholder - remove HTML comment markers to activate
+## Heroku Pipeline Name
+Enter descriptive text satisfying the following:
+This is the name of the Heroku pipeline for this system. If you don't have a pipeline, this is the name of the app in Heroku. A pipeline is a group of Heroku apps that share the same codebase where each app in a pipeline represents the different stages in a continuous delivery workflow, i.e. staging, production.
+
+...or delete this placeholder if not applicable to this system
+-->
+
 ## Key Management Process Type
 
 None
@@ -97,12 +106,12 @@ There are no keys for rotation.
 
 ## Monitoring
 
-- https://upp-prod-delivery-us.upp.ft.com/__health
-- https://upp-prod-delivery-eu.upp.ft.com/__health
+*   <https://upp-prod-delivery-us.upp.ft.com/__health>
+*   <https://upp-prod-delivery-eu.upp.ft.com/__health>
 
 ## First Line Troubleshooting
 
-https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting
+<https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting>
 
 ## Second Line Troubleshooting
 
