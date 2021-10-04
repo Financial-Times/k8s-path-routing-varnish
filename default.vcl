@@ -42,7 +42,7 @@ sub vcl_recv {
     elif (req.url ~ "^\/things\?.*$") {
         set req.backend_hint = dynBackend.backend("public-things-api");
     }
-    elif (req.url ~ "^\/lists\/notifications.*$") {
+    elif (req.url ~ "^\/lists\/notifications[^-push].*$") {
         set req.backend_hint = dynBackend.backend("list-notifications-rw");
     }
     elif (req.url ~ "^\/lists.*$") {
