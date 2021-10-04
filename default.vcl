@@ -45,7 +45,7 @@ sub vcl_recv {
     elif (req.url ~ "^\/lists\/notifications(?!-push).*$") {
         set req.backend_hint = dynBackend.backend("list-notifications-rw");
     }
-    elif (req.url ~ "^\/lists.*$") {
+    elif (req.url ~ "^\/lists(?!\/notifications).*$") {
         set req.backend_hint = dynBackend.backend("public-lists-api");
     }
     elif (req.url ~ "^\/concepts\/notifications\/.*$") {
