@@ -18,23 +18,6 @@ Platinum
 
 Production
 
-## Delivered By
-
-content
-
-## Supported By
-
-content
-
-## Known About By
-
-- hristo.georgiev
-- mihail.mihaylov
-- kalin.arsov
-- boyko.boykov
-- donislav.belev
-- dimitar.terziev
-
 ## Host Platform
 
 AWS
