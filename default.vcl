@@ -95,7 +95,7 @@ sub vcl_recv {
             return(synth(405, "Method Not Allowed"));
         }
         set req.url = "/v1/graphql";
-        set req.backend_hint = dynBackend.backend("hasura");
+        set req.backend_hint = dynBackend.backend("cm-hasura-poc");
     }
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
         # create a new backend dynamically to match the requested URL that will be looked up in the Kubernetes DNS.
