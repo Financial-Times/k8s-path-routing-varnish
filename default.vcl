@@ -30,6 +30,9 @@ sub vcl_recv {
         set req.url = "/search";
         set req.backend_hint = dynBackend.backend("combined-content-search");
     }
+    elif(req.url ~ "^\/content\/live-events.*$") {
+        set req.backend_hint = dynBackend.backend("cm-live-events-api");
+    }
     elif (req.url ~ "^\/content\/.*$") {
         set req.backend_hint = dynBackend.backend("content-public-read");
     }
