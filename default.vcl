@@ -90,6 +90,9 @@ sub vcl_recv {
     elif (req.url ~ "^\/portal\/.*$") {
         set req.backend_hint = dynBackend.backend("cm-portal-gateway");
     }
+    elif(req.url ~ "^\/live-events.*$") {
+        set req.backend_hint = dynBackend.backend("cm-live-events-api");
+    }
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
         # create a new backend dynamically to match the requested URL that will be looked up in the Kubernetes DNS.
         # For example calling the URL /__content-ingester/xyz will forward the request to the service content-ingester with the url /xyz
