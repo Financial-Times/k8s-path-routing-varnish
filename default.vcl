@@ -60,9 +60,6 @@ sub vcl_recv {
     elif (req.url ~ "^\/concepts\/notifications\/.*$") {
         set req.backend_hint = dynBackend.backend("concept-events-notifications-reader");
     }
-    elif (req.url ~ "^\/concepts\?.*$") {
-        set req.backend_hint = dynBackend.backend("concept-search-api");
-    }
     elif (req.url ~ "^\/concepts\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("public-concepts-api");
     }
