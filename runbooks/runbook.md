@@ -8,7 +8,7 @@ k8s-path-routing-varnish
 
 ## Primary URL
 
-<https://upp-prod-delivery-glb.upp.ft.com/>
+<https://github.com/Financial-Times/k8s-path-routing-varnish>
 
 ## Service Tier
 
@@ -80,12 +80,12 @@ There are no keys for rotation.
 
 ## Monitoring
 
-- https://upp-prod-delivery-us.upp.ft.com/__health
-- https://upp-prod-delivery-eu.upp.ft.com/__health
+- <https://upp-prod-delivery-us.upp.ft.com/__health>
+- <https://upp-prod-delivery-eu.upp.ft.com/__health>
 
 ## First Line Troubleshooting
 
-https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting
+<https://github.com/Financial-Times/upp-docs/tree/master/guides/ops/first-line-troubleshooting>
 
 ## Second Line Troubleshooting
 
