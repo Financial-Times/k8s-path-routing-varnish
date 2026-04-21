@@ -31,7 +31,7 @@ sub vcl_recv {
         set req.backend_hint = dynBackend.backend("combined-content-search");
     }
     elif (req.url ~ "^\/content\/.*$") {
-        set req.backend_hint = dynBackend.backend("content-public-read");
+        set req.backend_hint = dynBackend.backend("cm-content-public-read-go");
     }
     elif (req.url ~ "^\/enrichedcontent\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}.*$") {
         set req.backend_hint = dynBackend.backend("enriched-content-read-api");
